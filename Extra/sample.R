@@ -117,3 +117,22 @@ Test2 = cpk.plot(Achoc,n=5,m=29,LIE=388,LSE=412,dist="Normal")
 ## CLEANED DATA
 Test3 = cpk.plot(x,n=5,m=28,LIE=388,LSE=412,dist="Weibull")
 Test3
+
+##-----------------------------------------------------##
+# ----------------Visualizing Test3-------------------- #
+# Process Specification vs Empirical displacement (trend)
+x=rweibull(10000,shape=formW,scale=escW)
+p1 = ggplot(as.data.frame(x), aes(x=x)) + geom_density(alpha=.3) + xlab("Process Specification - Grams (g)")+
+     geom_vline(aes(xintercept = 400), linetype=1,size=1,col="firebrick") +
+     geom_vline(aes(xintercept = 388), linetype=2,size=1,col="firebrick") +
+     geom_vline(aes(xintercept = 412), linetype=2,size=1,col="firebrick") + xlim(c(380,420))+ coord_flip()
+
+p2 = ggplot(Xbar, aes(x=Subamostra,y=medias))+
+  geom_line(size=1,col="darkslategray4") +  geom_point(size=3,col="darkslategray4") +
+  geom_line(aes(y = LM), linetype=1,size=.7,col="firebrick")+
+  geom_line(aes(y = LIC), linetype=2,size=.7,col="firebrick")+
+  geom_line(aes(y = LSC), linetype=2,size=.7,col="firebrick")+
+  ylab("Control Chart (x-bar)") + xlab("Sample (m)")+
+  ylim(c(380,420)) 
+
+cowplot::plot_grid(p1,p2,nrow=1, rel_widths = c(1, 3))
