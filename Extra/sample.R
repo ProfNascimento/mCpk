@@ -38,8 +38,8 @@ SD= mean(amplitude)/d2
 ######################
 ## Range Control Chart
 ######################
-R = data.frame(cbind(amplitude,Subamostra))
-Rbar = mean(amplitude)
+R= data.frame(cbind(amplitude,Subamostra))
+Rbar=mean(amplitude)
 LSCr = Rbar + 3*(d3*Rbar/(d2))
 LICr = Rbar - 3*(d3*Rbar/d2) ; if(LICr<0){LICr=0}
 
@@ -87,7 +87,7 @@ m2 = try(((2/(length(x)^2 - length(x))) * (sum((pos - 1)*x  ))) - mean(x))
 formW =  try(( - log(2) / ( log( 1 -( m2 / mean(x)) ) )))
 escW = try((mean(x) /gamma( 1 / formW+1)))
 
-ks.test(x,"pgamma",scale=escG,shape=formG)
+ks.test(x,"pgamma",scale=(escG/formG),shape=formG)
 ks.test(x,"pweibull",shape=formW,scale=escW)
 ks.test(x,"pnorm",mean=fit$estimate[1],sd=fit$estimate[2])
 
