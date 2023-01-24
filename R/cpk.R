@@ -3,9 +3,6 @@
 #' This function plot the modified interval Cpk.
 #'
 #' @import ggplot2
-#' @importFrom magrittr %>%
-#' @name %>%
-#' @rdname pipe
 #' @param data,n,m,LSE,LIE,dist,B0,CI Path to the input file
 #' @return tabela
 #' @export
@@ -130,13 +127,13 @@ cpk.plot = function(data,n,m,LSE,LIE,dist,B0=1000,CI=0.95){
     CPK = as.data.frame(cbind(SAMPLE,Cpk,CpkSup,CpkInf))
     inferior<-min(CpkInf) ; superior<-max(CpkSup)
 
-    gr = ggplot(CPK, aes(x=SAMPLE,y=Cpk)) %>%
-      scale_y_continuous(limits = c(min(Cpk,inferior),max(1.6,superior))) %>%
-      geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = 1,fill = "tomato", alpha = 0.02) %>%
-      geom_rect(xmin = -Inf, xmax = Inf, ymin = 1.33, ymax = Inf, fill = "cadetblue3", alpha = 0.02) %>%
-      geom_rect(xmin = -Inf, xmax = Inf, ymin = 1, ymax = 1.33, fill = "azure4", alpha = 0.02) %>%
-      geom_line(size=1) +  geom_point(size=3) %>%
-      geom_line(aes(y = CpkInf), linetype=2,size=1,col="dimgray") %>%
+    gr = ggplot(CPK, aes(x=SAMPLE,y=Cpk)) +
+      scale_y_continuous(limits = c(min(Cpk,inferior),max(1.6,superior))) +
+      geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = 1,fill = "tomato", alpha = 0.02) +
+      geom_rect(xmin = -Inf, xmax = Inf, ymin = 1.33, ymax = Inf, fill = "cadetblue3", alpha = 0.02) +
+      geom_rect(xmin = -Inf, xmax = Inf, ymin = 1, ymax = 1.33, fill = "azure4", alpha = 0.02) +
+      geom_line(size=1) +  geom_point(size=3) +
+      geom_line(aes(y = CpkInf), linetype=2,size=1,col="dimgray") +
       geom_line(aes(y = CpkSup), linetype=2,size=1,col="dimgray")
 
     op = print(gr)
