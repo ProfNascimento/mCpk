@@ -2,3 +2,4 @@
 
 export(cpk.plot)
 import(ggplot2)
+importFrom(MASS,fitdistr)

@@ -3,6 +3,7 @@
 #' This function plot the modified interval Cpk.
 #'
 #' @import ggplot2
+#' @importFrom MASS fitdistr
 #' @param data,n,m,LSE,LIE,dist,B0,CI Path to the input file
 #' @return tabela
 #' @export
