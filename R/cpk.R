@@ -4,10 +4,10 @@
 #'
 #' @import ggplot2
 #' @importFrom MASS fitdistr
-#' @param data,n,m,LSE,LIE,dist,B0,CI Path to the input file
+#' @param dados,n,m,LSE,LIE,dist,B0,CI Path to the input file
 #' @return tabela
 #' @export
-cpk.plot = function(data,n,m,LSE,LIE,dist,B0=1000,CI=0.95){
+cpk.plot = function(dados,n,m,LSE,LIE,dist,B0=1000,CI=0.95){
   Cpk<-c();  CpkSup<-c();
   CpkInf<-c();  CpkB<-c()
   SAMPLE = 1:m;             #PROCESS WINDOW SIZE

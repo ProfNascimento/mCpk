@@ -4,7 +4,7 @@
 \alias{cpk.plot}
 \title{Plot Cpk}
 \usage{
-cpk.plot(data, n, m, LSE, LIE, dist, B0 = 1000, CI = 0.95)
+cpk.plot(dados, n, m, LSE, LIE, dist, B0 = 1000, CI = 0.95)
 }
 \arguments{
 \item{data, n, m, LSE, LIE, dist, B0, CI}{Path to the input file}
