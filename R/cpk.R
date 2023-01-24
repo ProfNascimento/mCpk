@@ -56,8 +56,8 @@ cpk.plot = function(dados,n,m,LSE,LIE,dist,B0=1000,CI=0.95){
       halpha<-n/(((n*sum((x)*log(x))/s2)-sum(log(x))))
       hbet<-(s2/n)/halpha
 
-      Upv <- qgamma(c(CI+(1-CI)/2),shape=halpha,scale=hbet)
-      Lpv <- qgamma(c((1-CI)/2),shape=halpha,scale=hbet)
+      Upv <- qgamma(0.99865,shape=halpha,scale=hbet)
+      Lpv <- qgamma(0.00135,shape=halpha,scale=hbet)
       Mv <-  qgamma(0.5,shape=halpha,scale=hbet)
       cpkgama <- min((LSE - Mv)/(Upv-Mv), (Mv - LIE)/(Mv-Lpv))
       Cpk[i]<-cpkgama
@@ -68,8 +68,8 @@ cpk.plot = function(dados,n,m,LSE,LIE,dist,B0=1000,CI=0.95){
         balphaM = (n*sum(z)) / (n*sum(z*log(z)) - (sum(z)*sum(log(z))) )
         bbetM =   (1/(n^2))*(n*sum((z)*log(z))- (sum(z)*sum(log(z))) )
 
-        UM <- qgamma(c(CI+(1-CI)/2),shape=balphaM,scale=bbetM)
-        LM <- qgamma(c((1-CI)/2),shape=balphaM,scale=bbetM)
+        UM <- qgamma(0.99865,shape=balphaM,scale=bbetM)
+        LM <- qgamma(0.00135,shape=balphaM,scale=bbetM)
         MM <- qgamma(0.5,shape=balphaM,scale=bbetM)
         cpkbootM<- min((LSE - MM)/(UM-MM), (MM - LIE)/(MM-LM))
         CpkB[k] <- cpkbootM
@@ -96,8 +96,8 @@ cpk.plot = function(dados,n,m,LSE,LIE,dist,B0=1000,CI=0.95){
       formW =  try(( - log(2) / ( log( 1 -( m2 / m1) ) )))
       escW = try((m1 /gamma( 1 / formW+1)))
 
-      UM <- qweibull(c(CI+(1-CI)/2),formW,scale=escW)
-      LM <- qweibull(c((1-CI)/2),formW,scale=escW)
+      UM <- qweibull(0.99865,formW,scale=escW)
+      LM <- qweibull(0.00135,formW,scale=escW)
       MM <- qweibull(0.5,formW,scale=escW)
       cpkweibull<- min((LSE - MM)/(UM-MM), (MM - LIE)/(MM-LM))
       Cpk[i]<-cpkweibull
@@ -111,8 +111,8 @@ cpk.plot = function(dados,n,m,LSE,LIE,dist,B0=1000,CI=0.95){
         balpha =  try(( - log(2) / ( log( 1 -( m2y / m1y) ) )))
         bbeta = try((m1y /gamma(1 / balpha+1)))
 
-        UM <- qweibull(c(CI+(1-CI)/2),balpha,scale=bbeta)
-        LM <- qweibull(c((1-CI)/2),balpha,scale=bbeta)
+        UM <- qweibull(0.99865,balpha,scale=bbeta)
+        LM <- qweibull(0.00135,balpha,scale=bbeta)
         MM <- qweibull(0.5,balpha,scale=bbeta)
         cpkbootM<- min((LSE - MM)/(UM-MM), (MM - LIE)/(MM-LM))
         CpkB[k] <- cpkbootM
