@@ -54,7 +54,7 @@ cpk.plot = function(dados,n,m,LSE,LIE,dist,B0=1000,CI=0.95){
 
       s2<-sum(x)
       halpha<-n/(((n*sum((x)*log(x))/s2)-sum(log(x))))
-      hbet<-(1/(n*(n-1)))*(n*sum((x)*log(x))-s2*sum(log(x)))
+      hbet<-(s2/n)/halpha
 
       Upv <- qgamma(c(CI+(1-CI)/2),shape=halpha,scale=hbet)
       Lpv <- qgamma(c((1-CI)/2),shape=halpha,scale=hbet)
@@ -68,8 +68,8 @@ cpk.plot = function(dados,n,m,LSE,LIE,dist,B0=1000,CI=0.95){
         balphaM = (n*sum(z)) / (n*sum(z*log(z)) - (sum(z)*sum(log(z))) )
         bbetM =   (1/(n^2))*(n*sum((z)*log(z))- (sum(z)*sum(log(z))) )
 
-        UM <- qgamma(c(CI+(1-CI)/2),balphaM,scale=bbetM)
-        LM <- qgamma(c((1-CI)/2),balphaM,scale=bbetM)
+        UM <- qgamma(c(CI+(1-CI)/2),shape=balphaM,scale=bbetM)
+        LM <- qgamma(c((1-CI)/2),shape=balphaM,scale=bbetM)
         MM <- qgamma(0.5,shape=balphaM,scale=bbetM)
         cpkbootM<- min((LSE - MM)/(UM-MM), (MM - LIE)/(MM-LM))
         CpkB[k] <- cpkbootM
