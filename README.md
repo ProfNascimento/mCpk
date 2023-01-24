@@ -14,4 +14,4 @@ devtools::install_github("ProfNascimento/mCpk")
 
 A quick overview of some of the key functions:
 
-* `cpk.plot`: Plots a modified Cpk and archieves a matrix including Cpk point and interval estimations.
+* `cpk.plot`: Plots a modified Cpk and archives a matrix including Cpk point and interval estimations.
