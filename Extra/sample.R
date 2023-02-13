@@ -96,7 +96,7 @@ ggplot(data.frame(x),aes(x)) +
   geom_histogram(aes(y = ..density..),bins=8,col="azure4",fill="white") +
   geom_line(aes(y = ..density.., colour = "Smooth"), size=1,stat = "density")+
   stat_function(fun = dweibull, size=1,args=list(shape=formW,scale=escW),aes(colour = 'Weibull'))+
-  stat_function(fun = dgamma,size=1, args=list(shape=formG,scale=escG),aes(colour = 'Gamma'))+
+  stat_function(fun = dgamma,size=1, args=list(shape=formG,scale=(escG/formG)),aes(colour = 'Gamma'))+
   stat_function(fun = dnorm, args=list(mean=media,sd=desvio),aes(colour = 'Normal'))+
   scale_colour_manual(name="PROB.", values=c("#9999CC","Azure3","lightpink2","Cadetblue"))+
   scale_y_continuous("Density") + scale_x_continuous("Weight (g)")
