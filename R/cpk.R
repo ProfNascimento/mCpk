@@ -1,6 +1,6 @@
 #' Plot Cpk
 #'
-#' This function plot the modified interval Cpk.
+#' This function returns the point- and interval-estimation, summary of the process capability (Not, Barely, or Capable), as well as plots the modified-Cpk based on Bootstrap parametric resampling.
 #'
 #' @import ggplot2
 #' @importFrom MASS fitdistr
