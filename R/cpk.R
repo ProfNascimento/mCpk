@@ -4,7 +4,7 @@
 #'
 #' @import ggplot2
 #' @importFrom MASS fitdistr
-#' @param dados={"Matrix Data Class"},n={"Number of Replicas"},m={"Number of Rolling-Windows"},LSE={"Limit. Superior Esp."},LIE={"Limit. Inferior Esp."},dist={"Probability Dist."},B0={"Number of Bootstrap samples"},CI={"Confidence Interval"},SEED={"Random Number Generation state"} 
+#' @param dados={"Matrix Data Class"}
 #' @return tabela
 #' @export
 cpk.plot = function(dados,n,m,LSE,LIE,dist,B0=1000,CI=0.95,SEED=104465){
